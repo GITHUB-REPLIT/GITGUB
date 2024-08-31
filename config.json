@@ -49,7 +49,7 @@
     "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
   },
   "nickNameBot": "☞︎︎︎✍︎ 𝙰 𝚁 𝚈 𝙰 𝙽 ✿︎𝙱☺︎︎𝚃 ♕︎",
-  "prefix": "/",
+  "prefix": ".",
   "xnil": "https://xnil-apis.onrender.com/",
   "api": "https://www.noobs-api.000.pe",
   "api2": "https://www.noobs-api.000.pe/dipto",
