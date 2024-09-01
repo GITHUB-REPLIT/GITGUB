@@ -2,9 +2,9 @@ const axios = require("axios");
 
 module.exports = {
   config: {
-    name: "tiktok",
+    name: "tinfo",
     version: "1.0",
-    author: "a6y",
+    author: "mustakim",
     role: 0,
     category: "info",
   },
