@@ -5,7 +5,7 @@ module.exports = {
   config: {
     name: "4k",
     version: "1.0",
-    author: "DipTo",
+    author: "ARYAN",
     countDown: 15,
     role: 0,
     longDescription: "Upscale your image.",
@@ -48,4 +48,4 @@ module.exports = {
       message.reply("❌ | Error: " + error.message);
     }
   }
-};
+}; 
