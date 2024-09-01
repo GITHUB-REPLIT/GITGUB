@@ -1,47 +1,50 @@
-const axios = require('axios');
+const { existsSync, mkdirSync } = require("fs");
+const axios = require("axios");
+const tinyurl = require('tinyurl');
+
 module.exports = {
   config: {
-    name: "prompt",
+    name: "p",
+    aliases: [],
     version: "1.0",
-    author: "rehat--",
+    author: "Vex_Kshitiz",
     countDown: 5,
     role: 0,
-    guide: { en: "{pn} <prompt>" },
-    longDescription: {
-      en: "Get image generator prompt by replying image and by text"
-    },
-    category: "image"
+    shortDescription: "Generate prompt for an image",
+    longDescription: "generate prompt for an image",
+    category: "image",
+    guide: {
+      en: "{p}prompt (reply to image)"
+    }
   },
-  onStart: async function ({ message, event, args, api }) {
-    try {
-      let imageUrl;
-      let khankirChele = args.join(" ");
 
-      if (event.type === "message_reply") {
-        if (["photo", "sticker"].includes(event.messageReply.attachments[0]?.type)) {
-          imageUrl = event.messageReply.attachments[0].url;
-        } else {
-          return api.sendMessage({ body: "Reply must be an image." }, event.threadID, event.messageID);
-        }
-      } else if (args[0]?.match(/(https?:\/\/.*\.(?:png|jpg|jpeg))/g)) {
-        imageUrl = args[0];
-      } else if (!khankirChele) {
-        return api.sendMessage({ body: "Reply to an image or provide a prompt." }, event.threadID, event.messageID);
+  onStart: async function ({ message, event, api }) {
+    api.setMessageReaction("🕐", event.messageID, (err) => {}, true);
+    const { type, messageReply } = event;
+    const { attachments, threadID } = messageReply || {};
+
+    if (type === "message_reply" && attachments) {
+      const [attachment] = attachments;
+      const { url, type: attachmentType } = attachment || {};
+
+      if (!attachment || attachmentType !== "photo") {
+        return message.reply("Reply to an image.");
       }
 
-      if (imageUrl) {
-        const response = await axios.post(`https://rehatdesu.xyz/api/imagine/i2p?url=${encodeURIComponent(imageUrl)}`);
-        const description = response.data.result;
+      try {
+        const tinyUrl = await tinyurl.shorten(url);
+        const apiUrl = `https://prompt-gen-eight.vercel.app/kshitiz?url=${encodeURIComponent(tinyUrl)}`;
+        const response = await axios.get(apiUrl);
 
-        await message.reply(description);
-      } else if (khankirChele) {
-        const response = await axios.get(`https://rehatdesu.xyz/api/imagine/t2p?text=${encodeURIComponent(khankirChele)}`);
-        const prompt = response.data.response;
-        await message.reply(prompt);
+        const { prompt } = response.data;
+
+        message.reply(prompt, threadID);
+      } catch (error) {
+        console.error(error);
+        message.reply("❌ An error occurred while generating the prompt.");
       }
-    } catch (error) {
-      console.error(error);
-      message.reply("An error occurred.");
+    } else {
+      message.reply("Please reply to an image.");
     }
   }
 };
