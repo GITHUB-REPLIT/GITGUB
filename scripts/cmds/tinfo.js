@@ -24,7 +24,7 @@ module.exports = {
       var follower = Url.followerCount;
       const a6 = await axios.get(avtar,{responseType: 'stream'});
       var a6y = a6.data
-      var all = `𝙽𝙸𝙲𝙺𝙽𝙰𝙼𝙴:${nick}\n 𝚄𝚂𝙴𝚁𝙽𝙰𝙼𝙴:${user}\n𝙻𝙸𝙺𝙴:${like}\n𝙵𝙾𝙻𝙻𝙾𝚆𝙴𝚁:${follower} `;
+      var all = `𝖭𝖨𝖢𝖪𝖭𝖠𝖬𝖤:${nick}\n 𝖴𝖲𝖤𝖱𝖭𝖠𝖬𝖤:${user}\n𝖫𝖨𝖪𝖤:${like}\n𝖥𝖮𝖫𝖫𝖮𝖶𝖤𝖱:${follower} `;
       api.sendMessage({ body: `${all}`, attachment: a6y},threadID,messageID);
     } catch (error) {
       api.sendMessage(`error☞︎︎︎${error.message}`, event.threadID, event.messageID);
