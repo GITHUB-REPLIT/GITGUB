@@ -6,7 +6,7 @@ module.exports = {
   config: {
     name: "art",
     aliases: ['artify'],
-    author: "ArYan",
+    author: "Mahi--",
     version: "1.0",
     cooldowns: 20,
     role: 0,
