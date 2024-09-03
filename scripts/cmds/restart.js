@@ -1,3 +1,7 @@
+const fs = require("fs-extra");
+
+module.exports = {
+	config: {
 		name: "restart",
 		version: "1.1",
 		author: "NTKhang",
