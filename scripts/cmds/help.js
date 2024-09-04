@@ -3,13 +3,13 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ 𝗔 𝗥 𝗬 𝗔 𝗡 ]"; // changing this wont change the goatbot V2 of list cmd it is just a decoyy
+const doNotDelete = "[ 𝗔 𝗥 𝗬 𝗔 𝗡 ]"; 
 
 module.exports = {
   config: {
     name: "help",
     version: "1.17",
-    author: "𝖠𝖱𝖸𝖠𝖭",
+    author: "NTKhang",
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -32,9 +32,9 @@ module.exports = {
 
     if (args.length === 0) {
       const categories = {};
-      let msg = "";
+      let msg = "❉━━━━━━━━━━━━━❉";
 
-      msg += ``; // replace with your name 
+      msg += `\n 𝗔 𝗥 𝗬 𝗔 𝗡 ➳𝗟 𝗜 𝗦 𝗧\n❉━━━━━━━━━━━━━❉`; 
 
       for (const [name, value] of commands) {
         if (value.config.role > 1 && role < value.config.role) continue;
@@ -46,7 +46,7 @@ module.exports = {
 
       Object.keys(categories).forEach((category) => {
         if (category !== "info") {
-          msg += `\n╭─────❃『  ${category.toUpperCase()}  』`;
+          msg += `\n╭─────✰『  ${category.toUpperCase()}  』`;
 
 
           const names = categories[category].commands.sort();
@@ -55,18 +55,23 @@ module.exports = {
             msg += `\n│${cmds.join(" ".repeat(Math.max(1, 5 - cmds.join("").length)))}`;
           }
 
-          msg += `\n╰────────────✦`;
+          msg += `\n╰────────────✰`;
         }
       });
 
       const totalCommands = commands.size;
-      msg += `\n\n╭─────❃[𝗘𝗡𝗝𝗢𝗬]\n│>𝗧𝗢𝗧𝗔𝗟 𝗖𝗠𝗗𝗦: [${totalCommands}].\n│𝗧𝗬𝗣𝗘𝖳:[ ${prefix}𝗛𝗘𝗟𝗣 𝗧𝗢\n│<𝗖𝗠𝗗> 𝗧𝗢 𝗟𝗘𝗔𝗥𝗡 𝗧𝗛𝗘 𝗨𝗦𝗔𝗚𝗘.]\n╰────────────✦`;
+      msg += `\n\n╭─────✰[𝗘𝗡𝗝𝗢𝗬]\n│>𝗧𝗢𝗧𝗔𝗟 𝗖𝗠𝗗𝗦: [${totalCommands}].\n│𝗧𝗬𝗣𝗘𝖳:[ ${prefix}𝗛𝗘𝗟𝗣 𝗧𝗢\n│<𝗖𝗠𝗗> 𝗧𝗢 𝗟𝗘𝗔𝗥𝗡 𝗧𝗛𝗘 𝗨𝗦𝗔𝗚𝗘.]\n╰────────────✰`;
       msg += ``;
-      msg += `\n╭─────❃\n│🌟 | [ 𝗔 𝗥 𝗬 𝗔 𝗡 ]\n│https://www.facebook.com/ArYan.com.404\n╰────────────✦`; // its not decoy so change it if you want 
+      msg += `\n╭─────✰\n│🌟 | [ 𝗔 𝗥 𝗬 𝗔 𝗡 ]\n│https://www.facebook.com/ArYan.com.404\n╰────────────✰`; 
 
+ 				const helpListImages = [ "https://i.imgur.com/OEQCynU.jpeg", "https://i.imgur.com/nVn0vTo.jpeg", "https://i.imgur.com/OEQCynU.jpeg" ];
+
+
+      const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
 
       await message.reply({
         body: msg,
+        attachment: await global.utils.getStreamFromURL(helpListImage)
       });
     } else {
       const commandName = args[0].toLowerCase();
