@@ -1,6 +1,6 @@
 *cmd install sc.js module.exports = {
     config: {
-      name: "raj",
+      name: "music",
       aliases: ["sc"],
       version: "1.0",
       author: "Fahim_Noob",
