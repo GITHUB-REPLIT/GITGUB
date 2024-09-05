@@ -1,4 +1,4 @@
-const fs = require("fs-extra");
+.cmd install help.js const fs = require("fs-extra");
 const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
@@ -64,7 +64,7 @@ module.exports = {
       msg += ``;
       msg += `\n╭─────✰\n│🌟 | [ 𝗔 𝗥 𝗬 𝗔 𝗡 ]\n│https://www.facebook.com/ArYan.com.404\n╰────────────✰`; 
 
- 				const helpListImages = [ "https://i.imgur.com/OEQCynU.jpeg", "https://i.imgur.com/nVn0vTo.jpeg", "https://i.imgur.com/OEQCynU.jpeg" ];
+ 				const helpListImages = [ "https://i.imgur.com/5Q1cbiN.mp4" ];
 
 
       const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
