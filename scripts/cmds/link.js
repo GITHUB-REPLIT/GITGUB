@@ -3,11 +3,11 @@ module.exports = {
     name: "linkfb",
     aliases: ["link"],
     version: "1.0",
-    author: "Xemon",
+    author: "ArYan",
     countDown: 5,
     role: 0,
     shortDescription: "get facebook link",
-    longDescription: "",
+    longDescription: "your fb id kink",
     category: "utility",
     guide: {
       vi: "{pn} ",
