@@ -1,4 +1,4 @@
-*cmd install sc.js module.exports = {
+module.exports = {
     config: {
       name: "music",
       aliases: ["sc"],
