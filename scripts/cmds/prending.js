@@ -2,7 +2,7 @@ module.exports = {
   config: {
     name: "pending",
     version: "1.0",
-    author: "ArYan",
+    author: "ARYAN",
     countDown: 5,
     role: 2,
     shortDescription: {
@@ -47,7 +47,7 @@ onReply: async function({ api, event, Reply, getLang, commandName, prefix }) {
         const index = body.split(/\s+/);
         for (const singleIndex of index) {
             if (isNaN(singleIndex) || singleIndex <= 0 || singleIndex > Reply.pending.length) return api.sendMessage(getLang("invaildNumber", singleIndex), threadID, messageID);
-            api.sendMessage(`•THIS GC HAS BEEN APPROVED BY HØPÉLÉSS MÂHÎ • ENJOY `, Reply.pending[singleIndex - 1].threadID);
+            api.sendMessage(`𝗧𝗵𝗶𝘀 𝗯𝗼𝘅 𝗽𝗿𝗲𝗺𝗶𝘀𝘀𝗶𝗼𝗻 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹 💋\n\n𝗠𝗬 𝗔𝗥𝗬𝗔𝗡 𝗕𝗢𝗦𝗦 𝗙𝗯 𝗶𝗱: \nhttps://www.facebook.com/xxxx.com.404\n\n•𝗕𝗼𝘁 ${prefix}𝗵𝗲𝗹𝗽 𝘀𝗲𝗲 𝘆𝗼𝘂 𝗮𝗹𝗹 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀\n\n•𝗛𝗮𝘃𝗲 𝗮 𝗻𝗶𝗰𝗲 𝗺𝗼𝗿𝗻𝗶𝗻𝗴 💋`, Reply.pending[singleIndex - 1].threadID);
             count+=1;
         }
         return api.sendMessage(getLang("approveSuccess", count), threadID, messageID);
@@ -55,27 +55,27 @@ onReply: async function({ api, event, Reply, getLang, commandName, prefix }) {
 },
 
 onStart: async function({ api, event, getLang, commandName }) {
-	const { threadID, messageID } = event;
+  const { threadID, messageID } = event;
 
     var msg = "", index = 1;
 
     try {
-		var spam = await api.getThreadList(100, null, ["OTHER"]) || [];
-		var pending = await api.getThreadList(100, null, ["PENDING"]) || [];
-	} catch (e) { return api.sendMessage(getLang("cantGetPendingList"), threadID, messageID) }
+    var spam = await api.getThreadList(100, null, ["OTHER"]) || [];
+    var pending = await api.getThreadList(100, null, ["PENDING"]) || [];
+  } catch (e) { return api.sendMessage(getLang("cantGetPendingList"), threadID, messageID) }
 
-	const list = [...spam, ...pending].filter(group => group.isSubscribed && group.isGroup);
+  const list = [...spam, ...pending].filter(group => group.isSubscribed && group.isGroup);
 
     for (const single of list) msg += `${index++}/ ${single.name}(${single.threadID})\n`;
 
     if (list.length != 0) return api.sendMessage(getLang("returnListPending", list.length, msg), threadID, (err, info) => {
-		global.GoatBot.onReply.set(info.messageID, {
+    global.GoatBot.onReply.set(info.messageID, {
             commandName,
             messageID: info.messageID,
             author: event.senderID,
             pending: list
         })
-	}, messageID);
+  }, messageID);
     else return api.sendMessage(getLang("returnListClean"), threadID, messageID);
 }
 }
