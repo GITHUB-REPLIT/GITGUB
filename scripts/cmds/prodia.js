@@ -1,103 +1,94 @@
-const axios = require('axios');
+const axios = require("axios");
+
 module.exports = {
   config: {
-    name: 'prodia',
-    version: '1.0',
-    author: 'rehat--',
-    countDown: 0,
+    name: "prodia",
+    version: "1.1",
+    author: "Fahim_Noob",
     role: 0,
-    longDescription: {
+    shortDescription: {
       en: 'Text to Image'
     },
-    category: 'ai',
+    category: "image",
     guide: {
-      en: `1 | 3Guofeng3
-2 | Absolutereality_V16
-3 | Absolutereality_v181
-4 | AmIReal_V41
-5 | Analog-diffusion-1.0
-6 | Anythingv3_0-pruned
-7 | Anything-v4.5-pruned
-8 | AnythingV5_PrtRE
-9 | AOM3A3_orangemixs
-10 | Blazing_drive_v10g
-11 | Breakdomain_I2428
-12 | Breakdomain_M2150
-13 | CetusMix_Version35
-14 | ChildrensStories_v13D
-15 | ChildrensStories_v1SemiReal
-16 | ChildrensStories_v1ToonAnime
-17 | Counterfeit_v30
-18 | Cuteyukimixadorable_midchapter3
-19 | Cyberrealistic_v33
-20 | Dalcefo_v4
-21 | Deliberate_v2
-22 | Deliberate_v3
-23 | Dreamlike-anime-1.0
-24 | Dreamlike-diffusion-1.0
-25 | Dreamlike-photoreal-2.0
-26 | Dreamshaper_6BakedVae
-27 | Dreamshaper_7
-28 | Dreamshaper_8
-29 | Edgeofrealism_eorV20
-30 | Eimisanimediffusion_v1
-31 | Elldreths-vivid-mix
-32 | Epicphotogasm_xplusplus
-33 | Epicrealism_naturalsinrc1vae
-34 | Epicrealism_pureevolutionv3
-35 | Icantbelieveitsnotphotography_seco
-36 | Indigofurrymix_v75hybrid
-37 | Juggernaut_aftermath
-38 | Lofi_v4
-39 | Lyriel_v16
-40 | Majicmixrealistic_v4
-41 | Mechamix_v10
-42 | Meinamix_meinav9
-43 | Meinamix_meinav11
-44 | Neverendingdream_v122
-45 | Openjourney_v4
-46 | Pastelmixstylizedanime_pruned_fp16
-47 | Portraitplus_v1.0
-48 | Protogenx34
-49 | Realistic_vision_v1.4-pruned-fp16
-50 | Realistic_vision_v2.0
-51 | Realistic_vision_v4.0
-52 | Realistic_vision_v5.0
-53 | Redshift_diffusion-v10
-54 | Revanimated_v122
-55 | Rundiffusionfx25d_v10
-56 | Rundiffusionfx_v10
-57 | Sdv1_4
-58 | V1-5-pruned-emaonly
-59 | V1-5-inpainting
-60 | Shoninsbeautiful_v10
-61 | Theallys-mix-ii-churned
-62 | Timeless-1.0
-63 | Toonyou_beta6`
+      en: `{pn} your prompt | type models here are \n
+1 | 3Guofeng3_v34
+2 | absolutereality_V16
+3 | absolutereality_v181
+4 | analog-diffusion-1.0.ckpt
+5 | anythingv3_0-pruned.ckpt
+6 | anything-v4.5-pruned.ckpt
+7 | anythingV5_PrtRE
+8 | AOM3A3_orangemixs
+9 | blazing_drive_v10g
+10 | cetusMix_Version35
+11 | childrensStories_v13D
+12 | childrensStories_v1SemiReal
+13 | childrensStories_v1ToonAnime
+14 | Counterfeit_v30
+15 | cuteyukimixAdorable_midchapter3
+16 | cyberrealistic_v33
+17 | dalcefo_v4
+18 | deliberate_v2
+19 | deliberate_v3
+20 | dreamlike-anime-1.0
+21 | dreamlike-diffusion-1.0
+22 | dreamlike-photoreal-2.0
+23 | dreamshaper_6BakedVae
+24 | dreamshaper_7
+25 | dreamshaper_8
+26 | edgeOfRealism_eorV20
+27 | EimisAnimeDiffusion_V1
+28 | elldreths-vivid-mix
+29 | epicrealism_naturalSinRC1VAE
+30 | ICantBelieveItsNotPhotography_seco
+31 | juggernaut_aftermath
+32 | lofi_v4
+33 | lyriel_v16
+34 | majicmixRealistic_v4
+35 | mechamix_v10
+36 | meinamix_meinaV9
+37 | meinamix_meinaV11
+38 | neverendingDream_v122
+39 | openjourney_V4
+40 | pastelMixStylizedAnime_pruned_fp16
+41 | portraitplus_V1.0
+42 | protogenx34
+43 | Realistic_Vision_V1.4-pruned-fp16
+44 | Realistic_Vision_V2.0
+45 | Realistic_Vision_V4.0
+46 | Realistic_Vision_V5.0
+47 | redshift_diffusion-V10
+48 | revAnimated_v122
+49 | rundiffusionFX25D_v10
+50 | rundiffusionFX_v10
+51 | sdv1_4.ckpt
+52 | v1-5-pruned-emaonly
+53 | shoninsBeautiful_v10
+54 | theallys-mix-ii-churned
+55 | timeless-1.0.ckpt`
     }
   },
+  onStart: async function ({ message, api, args, event }) {
+    const text = args.join(' ');
 
-  onStart: async function ({ message, args, event, api }) {
-    try {
-      const info = args.join(' ');
-      const [prompt, model] = info.split('|').map(item => item.trim());
-      const text = args.join (" ");
-      if (!text) {
-        return message.reply("Add something baka.");
-      }
-      const modelParam = model || '35';
-      const apiUrl = `https://rehatdesu.xyz/api/imagine/prodia?prompt=${prompt}&model=${modelParam}&apikey=rehat666`;
-
-      await message.reply('Please Wait...⏳');
-      const form = {
-      };
-      form.attachment = [];
-      form.attachment[0] = await global.utils.getStreamFromURL(apiUrl);
-
-      message.reply(form);
-    } catch (error) {
-      console.error(error);
-      await message.reply('❌ | Sorry, API Have Skill Issue');
+    if (!text) {
+      return message.reply("Please provide a prompt with models");
     }
+
+    const [prompt, model] = text.split('|').map((text) => text.trim());
+    const models = model || "2";
+    const puti = 'xyz'
+      let baseURL = `https://smfahim.${puti}/prodia?prompt=${prompt}&model=${models}`;
+
+    api.setMessageReaction("⏳", event.messageID, () => {}, true);
+
+    const attachment = await global.utils.getStreamFromURL(baseURL);
+
+    message.reply({
+      attachment
+    });
+
+    api.setMessageReaction("✅", event.messageID, () => {}, true);
   }
 };
