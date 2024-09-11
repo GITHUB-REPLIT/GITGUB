@@ -32,9 +32,9 @@ module.exports = {
 
     if (args.length === 0) {
       const categories = {};
-      let msg = "❉━━━━━━━━━━━━━❉";
+      let msg = "╭───────❁";
 
-      msg += `\n 𝗔 𝗥 𝗬 𝗔 𝗡 ➳𝗟 𝗜 𝗦 𝗧\n❉━━━━━━━━━━━━━❉`; 
+      msg += `\n│𝗔𝗥𝗬𝗔𝗡 𝗛𝗘𝗟𝗣 𝗟𝗜𝗦𝗧\n╰────────────❁`; 
 
       for (const [name, value] of commands) {
         if (value.config.role > 1 && role < value.config.role) continue;
@@ -62,9 +62,9 @@ module.exports = {
       const totalCommands = commands.size;
       msg += `\n\n╭─────✰[𝗘𝗡𝗝𝗢𝗬]\n│>𝗧𝗢𝗧𝗔𝗟 𝗖𝗠𝗗𝗦: [${totalCommands}].\n│𝗧𝗬𝗣𝗘𝖳:[ ${prefix}𝗛𝗘𝗟𝗣 𝗧𝗢\n│<𝗖𝗠𝗗> 𝗧𝗢 𝗟𝗘𝗔𝗥𝗡 𝗧𝗛𝗘 𝗨𝗦𝗔𝗚𝗘.]\n╰────────────✰`;
       msg += ``;
-      msg += `\n╭─────✰\n│🌟 | [ 𝗔 𝗥 𝗬 𝗔 𝗡 ]\n│https://www.facebook.com/ArYan.com.404\n╰────────────✰`; 
+      msg += `\n╭─────✰\n│ ♥︎╣[❉𝗔 𝗥 𝗬 𝗔 𝗡❉]╠♥︎\n╰────────────✰`; 
 
- 				const helpListImages = [ "https://i.imgur.com/5Q1cbiN.mp4" ];
+ 				const helpListImages = [ "https://i.imgur.com/EuC6sT9.jpeg" ];
 
 
       const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
@@ -98,7 +98,7 @@ module.exports = {
   │ ⚙ 𝗚𝘂𝗶𝗱𝗲: ${usage}
   ├── USAGE
   │ 🔯 𝗩𝗲𝗿𝘀𝗶𝗼𝗻: ${configCommand.version || "1.0"}
-  │ ♻️𝗥𝗼𝗹𝗲: ${roleText}
+  │ ♻𝗥𝗼𝗹𝗲: ${roleText}
   ╰────────────⊙`;
 
         await message.reply(response);
