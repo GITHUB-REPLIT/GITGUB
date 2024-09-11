@@ -9,7 +9,7 @@ module.exports = {
   config: {
     name: "help",
     version: "1.17",
-    author: "NTKhang",
+    author: "ArYan",
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -89,22 +89,17 @@ module.exports = {
         const guideBody = configCommand.guide?.en || "No guide available.";
         const usage = guideBody.replace(/{p}/g, prefix).replace(/{n}/g, configCommand.name);
 
-        const response = `╭── NAME ────⭓
-  │ ${configCommand.name}
+        const response = `
+  ╭───⊙
+  │ 🔶 ${configCommand.name}
   ├── INFO
-  │ Description: ${longDescription}
-  │ Other names: ${configCommand.aliases ? configCommand.aliases.join(", ") : "Do not have"}
-  │ Other names in your group: Do not have
-  │ Version: ${configCommand.version || "1.0"}
-  │ Role: ${roleText}
-  │ Time per command: ${configCommand.countDown || 1}s
-  │ Author: ${author}
-  ├── Usage
-  │ ${usage}
-  ├── Notes
-  │ The content inside <XXXXX> can be changed
-  │ The content inside [a|b|c] is a or b or c
-  ╰━━━━━━━❖`;
+  │ 📝 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻: ${longDescription}
+  │ 👑 𝗔𝘂𝘁𝗵𝗼𝗿: ${author}
+  │ ⚙ 𝗚𝘂𝗶𝗱𝗲: ${usage}
+  ├── USAGE
+  │ 🔯 𝗩𝗲𝗿𝘀𝗶𝗼𝗻: ${configCommand.version || "1.0"}
+  │ ♻️𝗥𝗼𝗹𝗲: ${roleText}
+  ╰────────────⊙`;
 
         await message.reply(response);
       }
