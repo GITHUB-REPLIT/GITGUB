@@ -10,7 +10,7 @@ function loadAutoLinkStates() {
     const data = fs.readFileSync("autolink.json", "utf8");
     return JSON.parse(data);
   } catch (err) {
-
+    
     return {};
   }
 }
@@ -33,7 +33,7 @@ module.exports = {
     role: 0,
     shortDescription: 'Auto video downloader for Instagram, Facebook, TikTok, Twitter, pinterest and youtube',
     longDescription: '',
-    category: 'media',
+    category: 'utility',
     guide: {
       en: '{p}{n}',
     }
@@ -71,7 +71,7 @@ module.exports = {
       } else {
         api.sendMessage("", event.threadID, event.messageID);
       }
-      api.setMessageReaction("⏰", event.messageID, (err) => {}, true);
+      api.setMessageReaction("🕐", event.messageID, (err) => {}, true);
     }
   },
   downLoad: function (url, api, event) {
@@ -106,7 +106,7 @@ module.exports = {
       }
 
       const shortUrl = await shortenURL(res);
-      const messageBody = `╔════ஜ۩۞۩ஜ═══╗\n           𝗗𝗔𝗩𝗜𝗗 𝗥𝗔𝗝\n ╚════ஜ۩۞۩ஜ═══╝\n\n🔗𝙳𝙾𝚆𝚗𝙻𝙾𝙰𝙳 𝚁𝚄𝙻: ${shortUrl}`;
+      const messageBody = `✅ 🔗 Download Url: ${shortUrl}`;
 
       api.sendMessage({
         body: messageBody,
@@ -132,7 +132,7 @@ module.exports = {
         response.data.pipe(fs.createWriteStream(path));
         response.data.on('end', async () => {
           const shortUrl = await shortenURL(videoUrl);
-          const messageBody = `╔════ஜ۩۞۩ஜ═══╗\n           𝗗𝗔𝗩𝗜𝗗 𝗥𝗔𝗝\n ╚════ஜ۩۞۩ஜ═══╝\n\n🔗𝙳𝙾𝚆𝚗𝙻𝙾𝙰𝙳 𝚁𝚄𝙻: ${shortUrl}`;
+          const messageBody = `✅🔗 Download Url: ${shortUrl}`;
 
           api.sendMessage({
             body: messageBody,
@@ -160,7 +160,7 @@ module.exports = {
       }
 
       const shortUrl = await shortenURL(res);
-      const messageBody = `╔════ஜ۩۞۩ஜ═══╗\n           𝗗𝗔𝗩𝗜𝗗 𝗥𝗔𝗝\n ╚════ஜ۩۞۩ஜ═══╝\n\n🔗𝙳𝙾𝚆𝚗𝙻𝙾𝙰𝙳 𝚁𝚄𝙻: ${shortUrl}`;
+      const messageBody = `✅  Download Url: ${shortUrl}`;
 
       api.sendMessage({
         body: messageBody,
@@ -188,7 +188,7 @@ module.exports = {
       response.data.pipe(fs.createWriteStream(path));
       response.data.on('end', async () => {
         const shortUrl = await shortenURL(videoUrl);
-        const messageBody = `╔════ஜ۩۞۩ஜ═══╗\n           𝗗𝗔𝗩𝗜𝗗 𝗥𝗔𝗝\n ╚════ஜ۩۞۩ஜ═══╝\n\n🔗𝙳𝙾𝚆𝚗𝙻𝙾𝙰𝙳 𝚁𝚄𝙻: ${shortUrl}`;
+        const messageBody = `✅🔗 Download Url: ${shortUrl}`;
 
         api.sendMessage({
           body: messageBody,
@@ -217,7 +217,7 @@ module.exports = {
       response.data.pipe(fs.createWriteStream(path));
       response.data.on('end', async () => {
         const shortUrl = await shortenURL(videoUrl);
-        const messageBody = `╔════ஜ۩۞۩ஜ═══╗\n           𝗗𝗔𝗩𝗜𝗗 𝗥𝗔𝗝\n ╚════ஜ۩۞۩ஜ═══╝\n\n🔗𝙳𝙾𝚆𝚗𝙻𝙾𝙰𝙳 𝚁𝚄𝙻: ${shortUrl}`;
+        const messageBody = `✅🔗 Download Url: ${shortUrl}`;
 
         api.sendMessage({
           body: messageBody,
@@ -246,7 +246,7 @@ module.exports = {
       response.data.pipe(fs.createWriteStream(path));
       response.data.on('end', async () => {
         const shortUrl = await shortenURL(videoUrl);
-        const messageBody = `╔════ஜ۩۞۩ஜ═══╗\n           𝗗𝗔𝗩𝗜𝗗 𝗥𝗔𝗝\n ╚════ஜ۩۞۩ஜ═══╝\n\n🔗𝙳𝙾𝚆𝚗𝙻𝙾𝙰𝙳 𝚁𝚄𝙻: ${shortUrl}`;
+        const messageBody = `✅🔗 Download Url: ${shortUrl}`;
 
         api.sendMessage({
           body: messageBody,
@@ -429,4 +429,4 @@ async function fbDownloader(url) {
       success: false
     };
   }
-}
+  }
