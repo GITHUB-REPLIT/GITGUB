@@ -20,12 +20,14 @@ module.exports = {
 				name: 'It`s ArYan',
 				gender: 'Male',
 				github: 'ARYAN-ROBOT',
-				Fb: 'https://www.facebook.com/xxxx.com.404',
+				Tiktok: 'itzaryanchowdhury',
+				whatsapp: '+8801309769542',
 				Relationship: 'single',
-				bio: 'I Love my mather'
+				bio: 'I Love my mather',
+				messenger: 'https://m.me/xxxx.com.404'
 			};
 
-			const bold = 'https://i.imgur.com/93w0q7n.jpeg';
+			const bold = 'https://i.imgur.com/t3RQZHd.jpeg';
 			const tmpFolderPath = path.join(__dirname, 'tmp');
 
 			if (!fs.existsSync(tmpFolderPath)) {
@@ -38,12 +40,14 @@ module.exports = {
 			fs.writeFileSync(imgPath, Buffer.from(imgResponse.data, 'binary'));
 
 			const response = `╭─────❁\n│  𝗢𝗪𝗡𝗘𝗥 𝗜𝗡𝗙𝗢  \n│
-│ Name: ${ownerInfo.name}
-│Name : ${ownerInfo.gender}
-│Relationship : ${ownerInfo.Relationship}
-│Github : ${ownerInfo.github}
-│Fb : ${ownerInfo.Fb}
-│bio : ${ownerInfo.bio}\n╰────────────❁`;
+│Name: ${ownerInfo.name}
+│gender : ${ownerInfo.gender}
+│Relationship :${ownerInfo.Relationship}
+│Tiktok : ${ownerInfo.Tiktok}
+│Github :${ownerInfo.github}
+│whatsapp : ${ownerInfo.whatsapp}
+│bio : ${ownerInfo.bio}
+│messenger: ${ownerInfo.messenger}\n╰────────────❁`;
 
 			await api.sendMessage({
 				body: response,
@@ -52,7 +56,7 @@ module.exports = {
 
 			fs.unlinkSync(imgPath);
 
-			api.setMessageReaction('🚀', event.messageID, (err) => {}, true);
+			api.setMessageReaction('🐔', event.messageID, (err) => {}, true);
 		} catch (error) {
 			console.error('Error in ownerinfo command:', error);
 			return api.sendMessage('An error occurred while processing the command.', event.threadID);
