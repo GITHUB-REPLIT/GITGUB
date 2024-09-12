@@ -19,7 +19,7 @@ module.exports = {
         api.sendMessage(`📚 𝗚𝗼𝗮𝘁𝗠𝗮𝗿𝘁\n━━━━━━━━━━━━\n\n➜ ${event.body} 𝗉𝖺𝗀𝖾 <𝗽𝗮𝗴𝗲 𝗻𝘂𝗺𝗯𝗲𝗿>\n➜ ${event.body} 𝗌𝗁𝗈𝗐 <𝗜𝘁𝗲𝗺 𝗜𝗗>\n➜ ${event.body} 𝗎𝗉𝗅𝗈𝖺𝖽 < 𝗝𝘀𝗼𝗻 𝗙𝗼𝗿𝗺𝗮𝘁>\n➜ ${event.body} 𝖾𝖽𝗂𝗍 <𝗜𝘁𝗲𝗺 𝗜𝗗>\n➜ ${event.body} 𝗌𝖾𝖺𝗋𝖼𝗁 <𝗜𝘁𝗲𝗺 𝗡𝗮𝗺𝗲>\n➜ ${event.body} 𝖽𝖾𝗅𝖾𝗍𝖾 <𝗜𝘁𝗲𝗺 𝗜𝗗>\n\n📒 𝗡𝗼𝘁𝗲: 𝖨𝖿 𝗒𝗈𝗎 𝖽𝗈𝗇'𝗍 𝗄𝗇𝗈𝗐 𝗁𝗈𝗐 𝗍𝗈 𝗎𝗌𝖾 𝗎𝗉𝗅𝗈𝖺𝖽, 𝖾𝖽𝗂𝗍 𝖿𝖾𝖺𝗍𝗎𝗋𝖾𝗌 𝗒𝗈𝗎 𝖼𝖺𝗇 𝖺𝗌𝗄 𝖺𝖻𝗈𝗎𝗍 𝗍𝗁𝗂𝗌 𝗍𝗈𝗉𝗂𝖼 𝖿𝗋𝗈𝗆 𝗈𝗎𝗋 𝗚𝗼𝗮𝘁𝗠𝗮𝗿𝘁 𝖣𝖾𝗏𝖾𝗅𝗈𝗉𝖾𝗋𝗌.\n\n- 𝖳𝖾𝖺𝗆 𝗚𝗼𝗮𝘁𝗠𝗮𝗿𝘁\n𝖳𝗁𝖺𝗇𝗄 𝗒𝗈𝗎 𝖿𝗈𝗋 𝗎𝗌𝗂𝗇𝗀 𝗈𝗎𝗋 𝖦𝗈𝖺𝗍𝖬𝖺𝗋𝗍 𝗌𝖾𝗋𝗏𝗂𝖼𝖾𝗌 🥰.`, event.threadID, event.messageID);
       } else if (args[0] === "page") {
         const pageNumber = parseInt(args[1]);
-        const permission = ['61564523816700', '61565025325331'];
+        const permission = ["61564523816700", "61565025325331"];
     if (!permission.includes(event.senderID)) return api.sendMessage('Only Bot Admin\'s can use this command. My boss ArYan can do this.', event.threadId, event.messageId);
         const response = await axios.get(`${serverURL}/api/items?apikey=${APIKEY}`);
         const items = response.data;
