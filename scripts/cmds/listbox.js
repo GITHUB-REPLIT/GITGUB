@@ -2,7 +2,7 @@ module.exports = {
   config: {
     name: "listbox",
     aliases: [],
-    author: "kshitiz",
+    author: "ArYan",
     version: "2.0",
     cooldowns: 5,
     role: 2,
@@ -29,9 +29,9 @@ module.exports = {
         await api.sendMessage('No group chats found.', event.threadID);
       } else {
         const formattedList = filteredList.map((group, index) =>
-          `│${index + 1}. ${group.threadName}\n│𝐓𝐈𝐃: ${group.threadID}`
+          `│${index + 1}. ${group.threadName}\n│𝗚𝗥𝗢𝗨𝗣 𝗜𝗗: \n│${group.threadID}`
         );
-        const message = `╭─╮\n│𝐋𝐢𝐬𝐭 𝐨𝐟 𝐠𝐫𝐨𝐮𝐩 𝐜𝐡𝐚𝐭𝐬:\n${formattedList.map(line => `${line}`).join("\n")}\n╰───────────ꔪ`;
+        const message = `╭─────❁\n│𝗔𝗥𝗬𝗔𝗡 𝗟𝗜𝗦𝗧 𝗕𝗢𝗫 \n╰────────────❁\n\n╭────────────❁\n ${formattedList.map(line => `${line}`).join("\n")}\n`;
         await api.sendMessage(message, event.threadID, event.messageID);
       }
     } catch (error) {
