@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
  config: {
- name: "c",
+ name: "pest",
  version: "1.0",
  author: "Romeo", // if you change credit you are a gay
  countDown: 5,
