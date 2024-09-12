@@ -7,16 +7,18 @@ module.exports = {
   config: {
 
     name: 'store',
-
+   
+  aliases: ['st'],
+    
     version: '1.0',
 
-    author: 'Vex_Kshitiz',
+    author: 'ArYan',
 
     role: 0,
 
     shortDescription: 'store of store',
 
-    longDescription: 'store of cmds all  made by kshitiz',
+    longDescription: 'store of cmds all  made by ArYan',
 
     category: 'utility',
 
@@ -69,8 +71,11 @@ module.exports = {
         filteredCommands = commands.filter(cmd => cmd.cmdName.toLowerCase().includes(searchQuery.toLowerCase()));
 
       }
-
-
+      
+      
+      const permission = ['61564523816700', '61565025325331'];
+    if (!permission.includes(event.senderID)) return api.sendMessage('Only Bot Admin\'s can use this command. My boss ArYan can do this.', event.threadId, event.messageId);
+      
 
       const startIndex = (page - 1) * 10;
 
@@ -84,17 +89,7 @@ module.exports = {
 
       paginatedCommands.forEach(cmd => {
 
-        replyMessage += `
-
-        𝗜𝗗:${cmd.id}
-
-        𝗖𝗠𝗗:${cmd.cmdName}
-
-        𝗖𝗢𝗗𝗘:${cmd.codeLink}
-
-        𝗜𝗡𝗙𝗢:${cmd.description}
-
-      ----------------------------------------------`;
+        replyMessage += `📚𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\n\n👑 𝗜𝘁𝗲𝗺 𝗡𝗮𝗺𝗲: ${cmd.cmdName}\n🆔 𝗜𝘁𝗲𝗺 𝗜𝗗: ${cmd.id}\n📝 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻: ${cmd.description}\n📁 𝗜𝘁𝗲𝗺 𝗟𝗶𝗻𝗸: ${cmd.codeLink}\n\n-𝖳𝖾𝖺𝗆 𝗖𝗺𝗱𝘀𝘁𝗼𝗿𝗲\n𝖳𝗁𝖺𝗇𝗄 𝗒𝗈𝗎 𝖿𝗈𝗋 𝗎𝗌𝗂𝗇𝗀 𝗈𝗎𝗋 𝖢𝗆𝖽𝗌𝗍𝗈𝗋𝖾 𝗌𝖾𝗋𝗏𝗂𝖼𝖾𝗌 🥰\n\n`;
 
       });
 
@@ -102,7 +97,7 @@ module.exports = {
 
       if (replyMessage === "") {
 
-        replyMessage = "No commands found.";
+        replyMessage = "📚 𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\n𝖳𝗁𝖾 𝗌𝖾𝖺𝗋𝖼𝗁 𝗍𝖾𝗋𝗆 𝗒𝗈𝗎 𝗉𝗋𝗈𝗏𝗂𝖽𝖾𝖽 𝖽𝗈𝖾𝗌 𝗇𝗈𝗍 𝗆𝖺𝗍𝖼𝗁 𝖺𝗇𝗒 𝖺𝗏𝖺𝗂𝗅𝖺𝖻𝗅𝖾 𝗂𝗍𝖾𝗆𝗌 𝗂𝗇 𝗈𝗎𝗋 𝗔𝗿𝗬𝗮𝗻𝘀𝘁𝗼𝗿𝗲 𝗐𝖾𝖻𝗌𝗂𝗍𝖾.\n\n- 𝖳𝖾𝖺𝗆 𝗔𝗿𝗬𝗮𝗻𝘀𝘁𝗼𝗿𝗲\n𝖳𝗁𝖺𝗇𝗄 𝗒𝗈𝗎 𝖿𝗈𝗋 𝗎𝗌𝗂𝗇𝗀 𝗈𝗎𝗋 𝖠𝗋𝖸𝖺𝗇 𝗌𝖾𝗋𝗏𝗂𝖼𝖾𝗌 🥰.";
 
       }
 
@@ -168,15 +163,7 @@ module.exports = {
 
 
 
-    let replyMessage = `
-
-    𝗜𝗗:${selectedCommand.id}
-
-    𝗖𝗠𝗗:${selectedCommand.cmdName}
-
-    𝗖𝗢𝗗𝗘:${selectedCommand.codeLink}
-
-    𝗜𝗡𝗙𝗢:${selectedCommand.description}`;
+    let replyMessage = `📚𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\n\🆔 𝗜𝘁𝗲𝗺 𝗜𝗗:${selectedCommand.id}\n👑 𝗜𝘁𝗲𝗺 𝗡𝗮𝗺𝗲:${selectedCommand.cmdName}\n📁 𝗜𝘁𝗲𝗺 𝗟𝗶𝗻𝗸:${selectedCommand.codeLink}\n📝 𝗗𝗲𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻:${selectedCommand.description}\n\n-𝖳𝖾𝖺𝗆 𝗖𝗺𝗱𝘀𝘁𝗼𝗿𝗲\n𝖳𝗁𝖺𝗇𝗄 𝗒𝗈𝗎 𝖿𝗈𝗋 𝗎𝗌𝗂𝗇𝗀 𝗈𝗎𝗋 𝖢𝗆𝖽𝗌𝗍𝗈𝗋𝖾 𝗌𝖾𝗋𝗏𝗂𝖼𝖾𝗌. 🥰`;
 
 
 
