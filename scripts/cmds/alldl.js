@@ -1,46 +1,58 @@
-const axios = require('axios');
+const axios = require("axios");
 
 module.exports = {
   config: {
     name: "alldl",
-    aliases: [],
+    aliases: ["aldl"],
     version: "1.0",
-    author: "NTKhang",
-    countDown: 5,
+    author: "Fahim_Noob | UPoL Apis 🐔",
     role: 0,
-    longDescription: "Download video from provided URL",
-    category: 'downloader',
+    shortDescription: {
+      en: "Retrieves and sends video from a provided URL."
+    },
+    longDescription: {
+      en: "Retrieves video details from the provided URL and sends the video as an attachment."
+    },
+    category: "Media",
     guide: {
-      en: "{pn} <url>"
+      en: "{pn} <facebook_video_url>"
     }
   },
-  onStart: async function ({ message, args }) {
+  onStart: async function ({ api, event, args }) {
+    if (args.length === 0) {
+      return api.sendMessage("Please provide a URL after the command.", event.threadID, event.messageID);
+    }
+
+    const videoURL = args.join(" ");
+    const apiURL = `https://upol-all-downloader.onrender.com/alldl?url=${encodeURIComponent(videoURL)}`;
+
     try {
-      let url = args.join(" ");
-      if (!url) return message.reply("Please provide a URL to download the video.");
+      api.setMessageReaction("⏳", event.messageID, () => {}, true);
 
-      const batman = (await axios.get(`https://tanvir-dot.onrender.com/scrape/download?url=${url}`)).data;
+      const response = await axios.get(apiURL);
 
-      let headers = batman.formats[0].headers;
+      const { data: { url: { data: { high, title } } } } = response;
 
-      if (batman.formats[0].cookies) {
-        headers['Cookie'] = batman.formats[0].cookies;
+      if (!high) {
+        api.setMessageReaction("❌", event.messageID, () => {}, true);
+        return api.sendMessage("No video content available.", event.threadID, event.messageID);
       }
 
-      const stream = await axios({
-        method: 'get',
-        url: batman.formats[0].url,
-        headers: headers,
-        responseType: 'stream'
-      });
+      const stream = await global.utils.getStreamFromURL(high, "video.mp4");
 
-      message.reply({
-        body: `• ${batman.title}\n• Source: ${batman.source}\n• Duration: ${batman.duration}\n• Format: ${batman.formats[0].format}\n• Quality: ${batman.formats[0].quality}`,
-        attachment: stream.data
-      });
+      api.sendMessage({
+        body: title,
+        attachment: stream
+      }, event.threadID, (err, messageInfo) => {
+        if (!err) {
+          api.setMessageReaction("✅", event.messageID, () => {}, true);
+        } else {
+          api.setMessageReaction("❌", event.messageID, () => {}, true);
+        }
+      }, event.messageID);
     } catch (error) {
-      console.error(error);
-      message.reply("An error occurred while trying to download the video.");
+      api.setMessageReaction("❌", event.messageID, () => {}, true);
+      api.sendMessage("An error occurred while retrieving video details.", event.threadID, event.messageID);
     }
   }
 };
