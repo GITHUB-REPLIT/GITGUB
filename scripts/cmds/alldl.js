@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const axios = require("axios");
 
 module.exports = {
@@ -55,4 +56,7 @@ module.exports = {
       api.sendMessage("An error occurred while retrieving video details.", event.threadID, event.messageID);
     }
   }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
