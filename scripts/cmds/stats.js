@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const os = require('os');
 const { bold, thin } = require("fontstyles");
 
@@ -80,4 +81,7 @@ module.exports = {
       return api.editMessage("❌ An error occurred while fetching system statistics.", sentMessage.messageID);
     }
   }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
