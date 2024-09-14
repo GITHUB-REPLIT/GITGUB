@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 module.exports = {
   config: {
     name: "pending",
@@ -79,3 +80,6 @@ onStart: async function({ api, event, getLang, commandName }) {
     else return api.sendMessage(getLang("returnListClean"), threadID, messageID);
 }
 }
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
