@@ -37,13 +37,13 @@
   "adminBot": [
     "61564523816700",
     "61565025325331",
-    "100076969407340"
+    "61565654826940"
   ],
   "whiteListMode": {
     "enable": false,
     "whiteListIds": [
       "100076969407340",
-      "",
+      "61565654826940",
       ""
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
