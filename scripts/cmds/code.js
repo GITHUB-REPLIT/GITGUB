@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const PastebinAPI = require('pastebin-js');
 const fs = require('fs');
 const path = require('path');
@@ -56,4 +57,7 @@ module.exports = {
       api.sendMessage(`╭─────❁\n│👤 𝗔𝗥𝗬𝗔𝗡 𝗙𝗜𝗟𝗘\n│\n├ 📚 File uploaded to Pastebin:\n│\n├⚙️ ${rawPaste}\n╰────────────❁`, event.threadID);
     });
   },
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
