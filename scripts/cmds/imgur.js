@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const axios = require("axios");
 const baseApiUrl = async () => {
   const base = await axios.get(
@@ -41,3 +42,6 @@ const baseApiUrl = async () => {
       );
     }
   });
+  
+  const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
