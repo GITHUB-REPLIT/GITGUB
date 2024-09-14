@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
@@ -48,4 +49,7 @@ module.exports = {
       api.sendMessage("❌ | An error occurred. Please try again later.", event.threadID, event.messageID);
     }
   }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
