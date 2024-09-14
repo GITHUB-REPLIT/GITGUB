@@ -1,13 +1,14 @@
+const { GoatWrapper } = require("fca-liane-utils");
 module.exports = {
   config: {
     name: "inbox",
-    aliases: ["inboxme", "in"],
+    aliases: ["in"],
     version: "1.0",
-    author: "anchestor",
+    author: "ArYan",
     countDown: 10,
     role: 0,
     shortDescription: {
-      en: ""
+      en: "hello goatbot inbox no prefix file enjoy the cmmand @ArYan"
     },
     longDescription: {
       en: ""
@@ -34,4 +35,7 @@ module.exports = {
       console.error("Error bro: " + error);
     }
   }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
