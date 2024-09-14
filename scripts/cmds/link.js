@@ -1,3 +1,4 @@
+ const { GoatWrapper } = require("fca-liane-utils");
 module.exports = {
   config: {
     name: "linkfb",
@@ -28,4 +29,7 @@ module.exports = {
     let { profileUrl } = data[uid];
     return api.sendMessage(`${profileUrl}`, threadID, messageID);
   }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
