@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 module.exports = {
   config: {
     name: "profile",
@@ -30,4 +31,7 @@ module.exports = {
       message.reply(`⚠️ Error: ${error.message}`);
     }
   }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
