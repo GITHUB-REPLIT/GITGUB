@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 module.exports = {
 	config: {
 		name: "tid",
@@ -18,4 +19,7 @@ module.exports = {
 	onStart: async function ({ message, event }) {
 		message.reply(event.threadID.toString());
 	}
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
