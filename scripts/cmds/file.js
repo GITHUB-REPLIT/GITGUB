@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const fs = require('fs-extra');
 
 const { getPrefix } = global.utils;
@@ -41,4 +42,7 @@ module.exports = {
       message.reply(`ArYa তোমার file e problem আছে চেক দেও.`);
     }
   }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
