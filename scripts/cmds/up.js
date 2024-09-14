@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 module.exports = {
   config: {
     name: "up",
@@ -25,4 +26,7 @@ module.exports = {
     const uptimeString = `𝗛𝗼𝘂𝗿𝘀 ${hours}\n├─⏱️𝗠𝗶𝗻𝘂𝘁𝗲𝘀 ${minutes}\n├─⌚𝗦𝗲𝗰𝗼𝗻𝗱 ${seconds}\n╰───────────✰`;
     api.sendMessage(`╭─────✰\n│  『 𝗨𝗣𝗧𝗜𝗠𝗘 』  \n├❁𝙷𝙴𝙻𝙻𝙾 𝙴𝚅𝙴𝚁𝚈𝙾𝙽𝙴\n│\n├─⏰${uptimeString}`, event.threadID);
   }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
