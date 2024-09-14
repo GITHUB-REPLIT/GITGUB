@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const fs = require("fs-extra");
 
 module.exports = {
@@ -42,4 +43,7 @@ module.exports = {
 		await message.reply(getLang("restartting"));
 		process.exit(2);
 	}
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
