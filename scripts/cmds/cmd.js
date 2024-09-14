@@ -1,4 +1,3 @@
-const { GoatWrapper } = require("fca-liane-utils");
 const axios = require("axios");
 const { execSync } = require("child_process");
 const fs = require("fs-extra");
@@ -530,6 +529,3 @@ function unloadScripts(folder, fileName, configCommands, getLang) {
 
 global.utils.loadScripts = loadScripts;
 global.utils.unloadScripts = unloadScripts;
-
-const wrapper = new GoatWrapper(module.exports);
-wrapper.applyNoPrefix({ allowPrefix: true });
