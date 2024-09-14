@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const fs = require('fs-extra');
 const pathFile = __dirname + '/cache/autoseen.txt';
 
@@ -44,4 +45,7 @@ onStart: async ({ api, event, args }) => {
 		 console.log(e);
 	 }
 }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
