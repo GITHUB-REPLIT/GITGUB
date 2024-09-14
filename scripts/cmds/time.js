@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const axios = require('axios');
 
 module.exports = {
@@ -71,4 +72,7 @@ const rul = 'https://i.imgur.com/gTe2xTc.png';
  await api.sendMessage("⚠ | An error occurred while fetching the time.", threadID);
  }
  },
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
