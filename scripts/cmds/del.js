@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const fs = require('fs');
 const path = require('path');
 
@@ -33,4 +34,7 @@ module.exports = {
       message.reply(`❌ | ${commandName} this command cannot be deleted because: ${err.message}`);
     }
   }
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
