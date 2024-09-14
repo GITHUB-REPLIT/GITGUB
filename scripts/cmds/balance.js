@@ -1,7 +1,8 @@
+const { GoatWrapper } = require("fca-liane-utils");
 module.exports = {
 	config: {
 		name: "balance",
-		aliases: ["bal"],
+		aliases: ["tk"],
 		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
@@ -43,4 +44,7 @@ module.exports = {
 		const userData = await usersData.get(event.senderID);
 		message.reply(getLang("money", userData.money));
 	}
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
