@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 module.exports.config = {
   name: "album",
   author: "ArYan",
@@ -141,3 +142,6 @@ case 25:
     api.sendMessage(`Error: ${error.message}`, event.threadID, event.messageID);
   }
 };
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
