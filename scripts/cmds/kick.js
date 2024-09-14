@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 module.exports = {
 	config: {
 		name: "kick",
@@ -53,4 +54,7 @@ module.exports = {
 				api.removeUserFromGroup(uid, event.threadID);
 		}
 	}
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
