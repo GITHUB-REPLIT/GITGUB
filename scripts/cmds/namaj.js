@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const axios = require('axios');
 const cheerio = require('cheerio');
 const moment = require('moment-timezone');
@@ -83,4 +84,7 @@ module.exports = {
       message.reply("Sorry, there was an error retrieving the prayer time information.");
     }
   },
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
