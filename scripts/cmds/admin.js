@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const { config } = global.GoatBot;
 const { writeFileSync } = require("fs-extra");
 
@@ -113,4 +114,7 @@ module.exports = {
 				return message.SyntaxError();
 		}
 	}
-};
+}
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
