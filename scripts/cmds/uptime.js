@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const moment = require('moment-timezone');
 
 const fs = require('fs');
@@ -84,7 +85,7 @@ module.exports = {
 
     onStart: async function ({ api, event, usersData, threadsData }) {
 
-        const botName = config.nickNameBot || "𝖠𝖱𝖸𝖠𝖭 𝖱𝖮𝖡𝖮𝖳"; // Fetching from config
+        const botName = config.nickNameBot || "☞︎︎︎✍︎ 𝙰 𝚁 𝚈 𝙰 𝙽 ✿︎𝙱☺︎︎𝚃 ♕︎"; // Fetching from config
 
         const botPrefix = config.prefix || ".";
 
@@ -106,7 +107,7 @@ module.exports = {
 
         const links = [
 
-            "https://i.imgur.com/iu0YeDe.jpeg"
+            "https://i.imgur.com/zTABIvF.jpeg"
 
         ];
 
@@ -445,3 +446,5 @@ function formatUptime(seconds) {
     return uptimeStringParts.join(', ');
 
           }
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
