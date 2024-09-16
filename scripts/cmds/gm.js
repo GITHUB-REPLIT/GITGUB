@@ -11,9 +11,9 @@ module.exports = {
 
   config: {
 
-    name: "goatmart",
+    name: "store1",
 
-    aliases: ["gm"],
+    aliases: ["gh"],
 
     role: 0,
 
