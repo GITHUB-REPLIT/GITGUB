@@ -1,6 +1,3 @@
-const { GoatWrapper } = require("fca-liane-utils");
-const axios = require('axios');
-
 module.exports = {
   config: {
     name: "quiz",
@@ -208,6 +205,3 @@ function formatText(text) {
 }
 
 module.exports.formatText = formatText;
-
-const wrapper = new GoatWrapper(module.exports);
-wrapper.applyNoPrefix({ allowPrefix: true });
