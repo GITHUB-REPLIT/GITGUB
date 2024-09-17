@@ -1,3 +1,4 @@
+const { GoatWrapper } = require("fca-liane-utils");
 module.exports = {
     config: {
         name: "aryan",
@@ -17,4 +18,7 @@ onChat: async function({
 }) {
     if (event.body && event.body.toLowerCase() == "Aryan") return message.reply("ARYAN ALMIGHTY LORD YHWACH IS BUSY PLEASE WAIT 👑");
 }
-}; 
+}
+    
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
