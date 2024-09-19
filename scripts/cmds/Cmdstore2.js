@@ -1,17 +1,16 @@
-const { GoatWrapper } = require("fca-liane-utils");
 const axios = require("axios");
-const availableCmdsUrl = "https://raw.githubusercontent.com/Blankid018/D1PT0/main/availableCmds.json";
-const cmdUrlsJson = "https://raw.githubusercontent.com/Blankid018/D1PT0/main/cmdUrls.json";
+const availableCmdsUrl = "https://raw.githubusercontent.com/ARYAN-AROHI/AROHI-ARYAN/main/cmdsurl.json";
+const cmdUrlsJson = "https://raw.githubusercontent.com/ARYAN-AROHI/AROHI-ARYAN/main/cmds.json";
 const ITEMS_PER_PAGE = 10;
 
 module.exports.config = {
-  name: "cmdss",
-  aliases: ["cs", "br"],
-  author: "Dipto",
+  name: "cmdstore",
+  aliases: ["cs", "cmds"],
+  author: "ArYan",
   role: 0,
   version: "6.9",
   description: {
-    en: "Commands Store of Dipto",
+    en: "Commands Store of ArYan",
   },
   countDown: 3,
   category: "goatbot",
@@ -92,7 +91,7 @@ global.GoatBot.onReply.set(info.messageID, {
 module.exports.onReply = async function ({ api, event, Reply }) {
 
   if (Reply.author != event.senderID) {
-    return api.sendMessage("Who are you? 🐸", event.threadID, event.messageID);
+    return api.sendMessage("welcome vro 🐸", event.threadID, event.messageID);
   }
   const reply = parseInt(event.body);
   const startIndex = (Reply.page - 1) * ITEMS_PER_PAGE;
@@ -122,12 +121,9 @@ const  { status }  = Reply.cmdName[reply - 1]
     api.sendMessage(msg, event.threadID, event.messageID);
   } catch (error) {
     api.sendMessage(
-      "❌ | Failed to retrieve the command URL.",
+      "❌ | Failed to retrieve the comman URL.",
       event.threadID,
       event.messageID
     );
   }
 }
-
-const wrapper = new GoatWrapper(module.exports);
-wrapper.applyNoPrefix({ allowPrefix: true });
