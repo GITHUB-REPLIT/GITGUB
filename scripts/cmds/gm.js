@@ -1,115 +1,129 @@
-const axios = require('axios');
+const axios = require("axios");
+const availableCmdsUrl = "https://raw.githubusercontent.com/ARYAN-AROHI/AROHI-ARYAN/main/cmdsurl.json";
+const cmdUrlsJson = "https://raw.githubusercontent.com/ARYAN-AROHI/AROHI-ARYAN/main/cmds.json";
+const ITEMS_PER_PAGE = 10;
 
-module.exports = {
-  config: {
-    name: "store",
-    aliases: ["st"],
-    role: 1,
-    shortDescription: {
-      en: "View and manage items in the GoatMart."
-    },
-    category: "store",
-    author: " ArYan",
+module.exports.config = {
+  name: "cmdstore",
+  aliases: ["cs", "cmds"],
+  author: "ArYan",
+  role: 0,
+  version: "6.9",
+  description: {
+    en: "Commands Store of ArYan",
   },
-  onStart: async ({ api, event, args, message }) => {
-    try {
-      // Fetch items from the URL
-      const { data: items } = await axios.get('https://raw.githubusercontent.com/ARYAN-AROHI/AROHI-ARYAN/main/cmds.json');
-      
-      if (!args[0]) {
-        api.sendMessage(`📚𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\n\n➜ ${event.body} page <page number>\n➜ ${event.body} show <Item ID>\n➜ ${event.body} upload <JSON FORMAT>\n➜ ${event.body} edit <Item ID>\n➜ ${event.body} search <Item name>\n➜ ${event.body} delete <Item ID>\n\n📒 Note: If you need help with upload or edit, you can ask our Aryanstore developers for guidance.\n\n- Team ArYanStore\nThank you for using our ArYanStore services 🥰.`, event.threadID, event.messageID);
-      } else if (args[0] === "page") {
-        const pageNumber = parseInt(args[1]);
-        const totalItems = items.length;
-        const totalPages = Math.ceil(totalItems / 6);
-        const offset = (pageNumber - 1) * 6;
+  countDown: 3,
+  category: "goatbot",
+  guide: {
+    en: "{pn} [command name | single character | page number]",
+  },
+};
+module.exports.onStart = async function ({ api, event, args }) {
+  const query = args.join(" ").trim().toLowerCase();
+  try {
+    const response = await axios.get(availableCmdsUrl);
+    let cmds = response.data.cmdName;
+    let finalArray = cmds;
+    let page = 1;
 
-        if (pageNumber <= 0 || pageNumber > totalPages || isNaN(pageNumber)) {
-          api.sendMessage("📚 𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\nThe page number you are trying to access is invalid. Please provide a valid page number.", event.threadID, event.messageID);
-        } else {
-          const pageItems = items.slice(offset, offset + 6);
-
-          const itemDescriptions = pageItems.map(
-            (item) =>
-              `👑 Item Name: ${item.itemName}\n🆔 Item ID: ${item.itemID}\n⚙ Item Type: ${item.type || "Unknown"}\n📝 Description: ${item.description}\n💻 Author: ${item.authorName}\n📅 Time: ${new Date(item.timestamp).toLocaleString()}\n\n━━━━━━━━━━━━\n`
-          );
-
-          const itemInfo = itemDescriptions.join("\n");
-
-          message.reply(`📚 𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\n\n✅ Items are listed in ArYanStore\n\n${itemInfo}📝 Usage:\n ${event.body.split(" ")[0]} [ show ] <item id> to view command data.\n\n👑 Pages: [ ${pageNumber} / ${totalPages} ]\n\n- Team ArYanStore`, event.threadID, event.messageID);
-        }
-      } else if (args[0] === "show") {
-        const itemID = isNaN(args[1]) ? args[1] : parseInt(args[1]);
-        
-        // Find the item with the given ID
-        const item = items.find(i => i.itemID === itemID || i.itemName.toLowerCase() === itemID.toLowerCase());
-
-        if (item) {
-          message.reply(`📚 𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\n\n👑 Item Name: ${item.itemName}\n🆔 Item ID: ${item.itemID}\n📝 Description: ${item.description}\n📁 Item Link: ${item.pastebinLink}\n\n- Team ArYanStore\nThank you for using our ArYanStore services 🥰.`, event.threadID, event.messageID);
-        } else {
-          message.reply("🛑 Item not found. Check the item ID or name.", event.threadID, event.messageID);
-        }
-      } else if (args[0] === "upload") {
-        try {
-          const jsonData = JSON.parse(args.slice(1).join(' '));
-          // Save the JSON data to your database or storage
-          // For example, you could send it to an API or save it locally
-          // This part will depend on your backend setup
-
-          // Example response
-          api.sendMessage("✅ Item successfully uploaded to GoatMart.", event.threadID, event.messageID);
-        } catch (error) {
-          api.sendMessage("❌ Error parsing JSON. Please make sure your JSON format is correct.", event.threadID, event.messageID);
-        }
-      } else if (args[0] === "edit") {
-        const itemID = isNaN(args[1]) ? args[1] : parseInt(args[1]);
-        const itemIndex = items.findIndex(i => i.itemID === itemID || i.itemName.toLowerCase() === itemID.toLowerCase());
-
-        if (itemIndex !== -1) {
-          const newItemData = JSON.parse(args.slice(2).join(' '));
-          items[itemIndex] = { ...items[itemIndex], ...newItemData };
-          // Update the item in your database or storage
-          // For example, send the updated item to an API or save it locally
-
-          // Example response
-          api.sendMessage("✅ Item successfully edited in GoatMart.", event.threadID, event.messageID);
-        } else {
-          api.sendMessage("🛑 Item not found. Check the item ID or name.", event.threadID, event.messageID);
-        }
-      } else if (args[0] === "search") {
-        const searchName = args.slice(1).join(' ').toLowerCase();
-        const foundItems = items.filter(i => i.itemName.toLowerCase().includes(searchName));
-
-        if (foundItems.length > 0) {
-          const searchResults = foundItems.map(
-            (item) =>
-              `👑 Item Name: ${item.itemName}\n🆔 Item ID: ${item.itemID}\n⚙ Item Type: ${item.type || "Unknown"}\n📝 Description: ${item.description}\n💻 Author: ${item.authorName}\n📅 Time: ${new Date(item.timestamp).toLocaleString()}\n\n━━━━━━━━━━━━\n`
-          ).join("\n");
-
-          message.reply(`📚 𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\n\n✅ Found items:\n\n${searchResults}`, event.threadID, event.messageID);
-        } else {
-          api.sendMessage("🛑 No items found matching your search criteria.", event.threadID, event.messageID);
-        }
-      } else if (args[0] === "delete") {
-        const itemID = isNaN(args[1]) ? args[1] : parseInt(args[1]);
-        const itemIndex = items.findIndex(i => i.itemID === itemID || i.itemName.toLowerCase() === itemID.toLowerCase());
-
-        if (itemIndex !== -1) {
-          items.splice(itemIndex, 1);
-          // Delete the item from your database or storage
-          // For example, send a delete request to an API or remove it locally
-
-          // Example response
-          api.sendMessage("✅ Item successfully deleted from GoatMart.", event.threadID, event.messageID);
-        } else {
-          api.sendMessage("🛑 Item not found. Check the item ID or name.", event.threadID, event.messageID);
+    if (query) {
+      if (!isNaN(query)) {
+        page = parseInt(query);
+      } else if (query.length === 1) {
+        finalArray = cmds.filter(cmd => cmd.cmd.startsWith(query));
+        if (finalArray.length === 0) {
+          return api.sendMessage(`❌ | No commands found starting with "${query}".`, event.threadID, event.messageID);
         }
       } else {
-        api.sendMessage("📚 𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\nThe command you used is not recognized. Please check the available commands and try again.", event.threadID, event.messageID);
+        finalArray = cmds.filter(cmd => cmd.cmd.includes(query));
+        if (finalArray.length === 0) {
+          return api.sendMessage(`❌ | Command "${query}" not found.`, event.threadID, event.messageID);
+        }
       }
-    } catch (error) {
-      console.error(error);
-      api.sendMessage("❌ An error occurred while handling your request. Please try again later.", event.threadID, event.messageID);
     }
+
+    const totalPages = Math.ceil(finalArray.length / ITEMS_PER_PAGE);
+    if (page < 1 || page > totalPages) {
+      return api.sendMessage(
+        `❌ | Invalid page number. Please enter a number between 1 and ${totalPages}.`,
+        event.threadID,
+        event.messageID
+      );
+    }
+
+    const startIndex = (page - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const cmdsToShow = finalArray.slice(startIndex, endIndex);
+    let msg = `╭───✦ Cmd Store ✦───╮\n│ Page ${page} of ${totalPages} page(s)\n│ Total ${finalArray.length} commands\n`;
+    cmdsToShow.forEach((cmd, index) => {
+      msg += `│ ───✦ ${startIndex + index + 1}. ${cmd.cmd}\n│ AUTHOR: ${cmd.author}\n│ UPDATE: ${cmd.update || null}\n`;
+    });
+    msg += `╰─────────────⧕`;
+
+    if (page < totalPages) {
+      msg += `\nType "${this.config.name} ${page + 1}" for more commands.`;
+    }
+    api.sendMessage(
+      msg,
+      event.threadID,
+      (error, info) => {
+global.GoatBot.onReply.set(info.messageID, {
+          commandName: this.config.name,
+          type: "reply",
+          messageID: info.messageID,
+          author: event.senderID,
+          cmdName: finalArray,
+          page: page
+        });
+      },
+      event.messageID
+    );
+    console.log(finalArray)
+  } catch (error) {
+    api.sendMessage(
+      "❌ | Failed to retrieve commands.",
+      event.threadID,
+      event.messageID
+    );
   }
 };
+
+module.exports.onReply = async function ({ api, event, Reply }) {
+
+  if (Reply.author != event.senderID) {
+    return api.sendMessage("welcome vro 🐸", event.threadID, event.messageID);
+  }
+  const reply = parseInt(event.body);
+  const startIndex = (Reply.page - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+
+  if (isNaN(reply) || reply < startIndex + 1 || reply > endIndex) {
+    return api.sendMessage(
+      `❌ | Please reply with a number between ${startIndex + 1} and ${Math.min(endIndex, Reply.cmdName.length)}.`,
+      event.threadID,
+      event.messageID
+    );
+  }
+  try {
+  const cmdName = Reply.cmdName[reply - 1].cmd
+const  { status }  = Reply.cmdName[reply - 1]
+    const response = await axios.get(cmdUrlsJson);
+    const selectedCmdUrl = response.data[cmdName];
+    if (!selectedCmdUrl) {
+      return api.sendMessage(
+        "❌ | Command URL not found.",
+        event.threadID,
+        event.messageID
+      );
+    }
+    api.unsendMessage(Reply.messageID);
+    const msg = `╭───────⭓\n│ STATUS :${status || null}\n│ Command Url: ${selectedCmdUrl}\n╰─────────────⭓`;
+    api.sendMessage(msg, event.threadID, event.messageID);
+  } catch (error) {
+    api.sendMessage(
+      "❌ | Failed to retrieve the comman URL.",
+      event.threadID,
+      event.messageID
+    );
+  }
+}
