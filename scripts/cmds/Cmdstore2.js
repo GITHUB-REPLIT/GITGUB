@@ -1,6 +1,7 @@
+const { GoatWrapper } = require("fca-liane-utils");
 const axios = require("axios");
-const availableCmdsUrl = "https://raw.githubusercontent.com/ARYAN-AROHI/AROHI-ARYAN/main/cmdsurl.json";
-const cmdUrlsJson = "https://raw.githubusercontent.com/ARYAN-AROHI/AROHI-ARYAN/main/cmds.json";
+const availableCmdsUrl = "https://raw.githubusercontent.com/ARYAN-AROHI/A4YA9-A40H1/refs/heads/scripts/cmdurl.js";
+const cmdUrlsJson = "https://raw.githubusercontent.com/ARYAN-AROHI/A4YA9-A40H1/refs/heads/scripts/cmds.js";
 const ITEMS_PER_PAGE = 10;
 
 module.exports.config = {
@@ -91,7 +92,7 @@ global.GoatBot.onReply.set(info.messageID, {
 module.exports.onReply = async function ({ api, event, Reply }) {
 
   if (Reply.author != event.senderID) {
-    return api.sendMessage("welcome vro 🐸", event.threadID, event.messageID);
+    return api.sendMessage("Who are you? 🐸", event.threadID, event.messageID);
   }
   const reply = parseInt(event.body);
   const startIndex = (Reply.page - 1) * ITEMS_PER_PAGE;
@@ -121,9 +122,12 @@ const  { status }  = Reply.cmdName[reply - 1]
     api.sendMessage(msg, event.threadID, event.messageID);
   } catch (error) {
     api.sendMessage(
-      "❌ | Failed to retrieve the comman URL.",
+      "❌ | Failed to retrieve the command URL.",
       event.threadID,
       event.messageID
     );
   }
 }
+
+const wrapper = new GoatWrapper(module.exports);
+wrapper.applyNoPrefix({ allowPrefix: true });
