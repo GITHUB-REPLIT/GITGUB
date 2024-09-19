@@ -7,9 +7,9 @@ module.exports = {
 
   config: {
 
-    name: 'stor',
+    name: 'store2',
    
-  aliases: ['dk'],
+  aliases: ['str'],
     
     version: '1.0',
 
@@ -17,9 +17,9 @@ module.exports = {
 
     role: 0,
 
-    shortDescription: 'store of store',
+    shortDescription: 'store2 of store',
 
-    longDescription: 'store of cmds all  made by ArYan',
+    longDescription: 'store2 of cmds all  made by ArYan',
 
     category: 'utility',
 
@@ -74,7 +74,7 @@ module.exports = {
       }
       
       
-      const permission = ['61564523816700','61565025325331','100076969407340'];
+      const permission = ['61565654826940','61565025325331','100076969407340'];
     if (!permission.includes(event.senderID)) return api.sendMessage('Only Bot Admin\'s can use this command. My boss ArYan can do this.', event.threadId, event.messageId);
       
 
