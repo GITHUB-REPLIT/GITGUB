@@ -86,7 +86,7 @@ module.exports = {
               `👑 Item Name: ${item.itemName}\n🆔 Item ID: ${item.itemID}\n⚙ Item Type: ${item.type || "Unknown"}\n📝 Description: ${item.description}\n💻 Author: ${item.authorName}\n📅 Time: ${new Date(item.timestamp).toLocaleString()}\n\n━━━━━━━━━━━━\n`
           ).join("\n");
 
-          message.reply(`📚 𝗚𝗼𝗮𝘁𝗠𝗮𝗿𝘁\n━━━━━━━━━━━━\n\nFound items:\n\n${searchResults}`, event.threadID, event.messageID);
+          message.reply(`📚 𝗔𝗥𝗬𝗔𝗡 𝗦𝗧𝗢𝗥𝗘\n━━━━━━━━━━━━\n\n✅ Found items:\n\n${searchResults}`, event.threadID, event.messageID);
         } else {
           api.sendMessage("🛑 No items found matching your search criteria.", event.threadID, event.messageID);
         }
