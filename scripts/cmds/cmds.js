@@ -7,9 +7,9 @@ module.exports = {
 
   config: {
 
-    name: 'store',
+    name: 'stor',
    
-  aliases: ['st'],
+  aliases: ['dk'],
     
     version: '1.0',
 
