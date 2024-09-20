@@ -1,7 +1,6 @@
-const { GoatWrapper } = require("fca-liane-utils");
 const axios = require("axios");
-const availableCmdsUrl = "https://raw.githubusercontent.com/ARYAN-AROHI/A4YA9-A40H1/refs/heads/scripts/cmdurl.js";
-const cmdUrlsJson = "https://raw.githubusercontent.com/ARYAN-AROHI/A4YA9-A40H1/refs/heads/scripts/cmds.js";
+const availableCmdsUrl = "https://raw.githubusercontent.com/ARYAN-AROHI-STORE/A4YA9-A40H1/refs/heads/main/CMDSRUL.json";
+const cmdUrlsJson = "https://raw.githubusercontent.com/ARYAN-AROHI-STORE/A4YA9-A40H1/refs/heads/main/CMDS.json";
 const ITEMS_PER_PAGE = 10;
 
 module.exports.config = {
@@ -55,11 +54,11 @@ module.exports.onStart = async function ({ api, event, args }) {
     const startIndex = (page - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
     const cmdsToShow = finalArray.slice(startIndex, endIndex);
-    let msg = `╭───✦ Cmd Store ✦───╮\n│ Page ${page} of ${totalPages} page(s)\n│ Total ${finalArray.length} commands\n`;
+    let msg = `╭───۞ Cmd Store\n│\n│ Page ${page} of ${totalPages} page(s)\n│ Total ${finalArray.length} commands\n`;
     cmdsToShow.forEach((cmd, index) => {
-      msg += `│ ───✦ ${startIndex + index + 1}. ${cmd.cmd}\n│ AUTHOR: ${cmd.author}\n│ UPDATE: ${cmd.update || null}\n`;
+      msg += `├──۞ ${startIndex + index + 1}. ${cmd.cmd}\n│ AUTHOR: ${cmd.author}\n│ UPDATE: ${cmd.update || null}\n`;
     });
-    msg += `╰─────────────⧕`;
+    msg += `╰─────────────۞`;
 
     if (page < totalPages) {
       msg += `\nType "${this.config.name} ${page + 1}" for more commands.`;
@@ -118,7 +117,7 @@ const  { status }  = Reply.cmdName[reply - 1]
       );
     }
     api.unsendMessage(Reply.messageID);
-    const msg = `╭───────⭓\n│ STATUS :${status || null}\n│ Command Url: ${selectedCmdUrl}\n╰─────────────⭓`;
+    const msg = `╭───────۞\n│ STATUS :${status || null}\n│ Command Url: ${selectedCmdUrl}\n╰─────────────۞`;
     api.sendMessage(msg, event.threadID, event.messageID);
   } catch (error) {
     api.sendMessage(
@@ -128,6 +127,3 @@ const  { status }  = Reply.cmdName[reply - 1]
     );
   }
 }
-
-const wrapper = new GoatWrapper(module.exports);
-wrapper.applyNoPrefix({ allowPrefix: true });
