@@ -2,7 +2,7 @@ module.exports = {
 config: { 
 name: "fluxx", 
 author: "jun jaam",
-category: "ai-generated" 
+category: "AI-G" 
 },
 onStart: async ({ message: { reply: r }, args: a }) => {
 let pr = a.join(" ");
