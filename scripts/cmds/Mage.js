@@ -10,7 +10,7 @@ module.exports = {
     role: 0,
     shortDescription: "anime image generator",
     longDescription: "",
-    category: "𝗔𝗜-𝗚𝗘𝗡𝗘𝗥𝗔𝗧𝗘𝗗",
+    category: "𝗔𝗜-𝗚𝗡𝗗",
     guide: {
       en: "{pn} <prompt>  --ar 16:9"
     }
