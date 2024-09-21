@@ -2,7 +2,7 @@ const { GoatWrapper } = require("fca-liane-utils");
 module.exports.config = {
   name: "album",
   author: "ArYan",
-  category: "video sender"
+  category: "VIDEO"
 };
 
 module.exports.onStart = async ({ api, event, args }) => {
