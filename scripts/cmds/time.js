@@ -10,7 +10,7 @@ module.exports = {
  role: 0,
  shortDescription: "Fetches the current time for a specified location",
  longDescription: "This command fetches the current time for a specified location using the IPGeolocation API. Use the command with a location name or coordinates.",
- category: "information",
+ category: "INFO",
  guide: {
  vi: '',
  en: "{pn}time <country name>"
