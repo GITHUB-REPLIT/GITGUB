@@ -10,7 +10,7 @@ module.exports = {
     role: 2,
     shortDescription: "Image generator from Fluxfl API",
     longDescription: "",
-    category: "ai-generated",
+    category: "AI-G",
     guide: {
       en: "{pn} <prompt> --ar 1:1 --model 2"
     }
