@@ -11,7 +11,7 @@ module.exports = {
 		role: 0,
 		shortDescription: "Displays TikTok video for selection.",
 		longDescription: "Displays TikTok video for selection.",
-		category: "downloader",
+		category: "Alldl",
 		guide: {
 			en: "{pn} [username] [limit]"
 		}
