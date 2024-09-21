@@ -5,7 +5,7 @@ module.exports = {
     role: 0,
     author: "ArYan",
     countDown: 5,
-    longDescription: "Randomvideo",
+    longDescription: "video",
     category: "randomvideo",
     guide:{
       en: "{pn} <video>"
