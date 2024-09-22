@@ -1,4 +1,3 @@
-const { GoatWrapper } = require("fca-liane-utils");
 fs = require("fs-extra");
 const axios = require("axios");
 const path = require("path");
@@ -61,9 +60,9 @@ module.exports = {
       });
 
       const totalCommands = commands.size;
-      msg += `\n  ├─────☾⋆\n	│» Total cmds: [${totalCommands}]\n  │「 ARYAN 」\n  ╰──────────⧕`;
+      msg += `\n  ├─────☾⋆\n	│» Total cmds: [${totalCommands}]\n  │「 ArYAN ALL CMDS 」\n  ╰──────────⧕`;
 
- 				const helpListImages = [ "https://i.imgur.com/Tf7l90I.jpeg","http://g-v1.onrender.com/l3Ot0BWCA.jpg","http://g-v1.onrender.com/QSGAjzVmZ.jpg"];
+ 				const helpListImages = [ "https://i.imgur.com/BSSIs0h.jpeg","https://i.imgur.com/F6D71wH.jpeg","https://i.imgur.com/ZBL3PIE.jpeg"];
 
 
       const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
@@ -117,7 +116,4 @@ function roleTextToString(roleText) {
     default:
       return "Unknown role";
   }
-                            }
-
-const wrapper = new GoatWrapper(module.exports);
-wrapper.applyNoPrefix({ allowPrefix: true });
+}
