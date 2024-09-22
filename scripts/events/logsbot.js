@@ -14,15 +14,15 @@ module.exports = {
 
 	langs: {
 		vi: {
-			title: "====== Nhật ký bot ======",
+			title: "•",
 			added: "\n✅\nSự kiện: bot được thêm vào nhóm mới\n- Người thêm: %1",
 			kicked: "\n❌\nSự kiện: bot bị kick\n- Người kick: %1",
 			footer: "\n- User ID: %1\n- Nhóm: %2\n- ID nhóm: %3\n- Thời gian: %4"
 		},
 		en: {
-			title: "",
+			title: "•",
 			added: "♻️ Bot has been added to a new group ♻️\n• Added by: %1",
-			kicked: "📛 Bot has been kicked to the group 📛\n• Kicked by: %1",
+			kicked: "📛 Bot has been kicked the group 📛\n• Kicked by: %1",
 			footer: "\n• Group Name: %2"
 		}
 	},
