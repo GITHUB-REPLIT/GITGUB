@@ -20,9 +20,9 @@ module.exports = {
 			footer: "\n- User ID: %1\n- Nhóm: %2\n- ID nhóm: %3\n- Thời gian: %4"
 		},
 		en: {
-			title: "♻️ Bot has been added to a new group ♻️",
-			added: "\n• Added by: %1",
-			kicked: "\n• Kicked by: %1",
+			title: "",
+			added: "♻️ Bot has been added to a new group ♻️\n• Added by: %1",
+			kicked: "📛 Bot has been kicked to the group 📛\n• Kicked by: %1",
 			footer: "\n• Group Name: %2"
 		}
 	},
