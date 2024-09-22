@@ -20,10 +20,10 @@ module.exports = {
 			footer: "\n- User ID: %1\n- Nhóm: %2\n- ID nhóm: %3\n- Thời gian: %4"
 		},
 		en: {
-			title: "====== Bot logs ======",
-			added: "\n✅\nEvent: bot has been added to a new group\n- Added by: %1",
+			title: "♻️ Bot has been added to a new group ♻️",
+			added: "\n✅\nEvent: bot has been added to a new group\• Added by: %1",
 			kicked: "\n❌\nEvent: bot has been kicked\n- Kicked by: %1",
-			footer: "\n- User ID: %1\n- Group: %2\n- Group ID: %3\n- Time: %4"
+			footer: "\n• Group Name : ℅2"
 		}
 	},
 
@@ -54,8 +54,7 @@ module.exports = {
 				threadName = threadData.threadName;
 				msg += getLang("kicked", authorName);
 			}
-			const time = getTime("DD/MM/YYYY HH:mm:ss");
-			msg += getLang("footer", author, threadName, threadID, time);
+			msg += getLang("footer", threadName, author);
 
 			for (const adminID of config.adminBot)
 				api.sendMessage(msg, adminID);
