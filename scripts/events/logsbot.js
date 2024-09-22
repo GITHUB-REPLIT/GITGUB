@@ -21,9 +21,9 @@ module.exports = {
 		},
 		en: {
 			title: "♻️ Bot has been added to a new group ♻️",
-			added: "\n• Group Name: %1","\n• Added by: %2"
-			kicked: "\n• Group Name: %1","\n• Kicked by: %2"
-			footer: ""
+			added: "\n• Added by: %1",
+			kicked: "\n• Kicked by: %1",
+			footer: "\n• Group Name: %2"
 		}
 	},
 
