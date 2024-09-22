@@ -23,7 +23,7 @@ module.exports = {
 			title: "♻️ Bot has been added to a new group ♻️",
 			added: "\n• Added by: %1",
 			kicked: "\n• Kicked by: %1",
-			footer: "\n• Group Name: %1"
+			footer: "\n• Group Name: %2"
 		}
 	},
 
