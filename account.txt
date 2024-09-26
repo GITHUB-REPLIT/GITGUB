@@ -29,7 +29,7 @@
 },
 {
     "domain": ".facebook.com",
-    "expirationDate": 1758866467,
+    "expirationDate": 1758866709,
     "hostOnly": false,
     "httpOnly": false,
     "name": "fbl_st",
@@ -38,7 +38,7 @@
     "secure": true,
     "session": false,
     "storeId": "0",
-    "value": "100439182%3BT%3A28788841",
+    "value": "100438033%3BT%3A28788845",
     "id": 3
 },
 {
@@ -71,6 +71,34 @@
 },
 {
     "domain": ".facebook.com",
+    "expirationDate": 1761890710.055807,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "ps_l",
+    "path": "/",
+    "sameSite": "lax",
+    "secure": true,
+    "session": false,
+    "storeId": "0",
+    "value": "1",
+    "id": 6
+},
+{
+    "domain": ".facebook.com",
+    "expirationDate": 1761890710.056023,
+    "hostOnly": false,
+    "httpOnly": true,
+    "name": "ps_n",
+    "path": "/",
+    "sameSite": "no_restriction",
+    "secure": true,
+    "session": false,
+    "storeId": "0",
+    "value": "1",
+    "id": 7
+},
+{
+    "domain": ".facebook.com",
     "expirationDate": 1761888535.970022,
     "hostOnly": false,
     "httpOnly": true,
@@ -81,11 +109,11 @@
     "session": false,
     "storeId": "0",
     "value": "RPD0ZhTZF3_6eF0lWrDjfvVv",
-    "id": 6
+    "id": 8
 },
 {
     "domain": ".facebook.com",
-    "expirationDate": 1732514467,
+    "expirationDate": 1732514709,
     "hostOnly": false,
     "httpOnly": false,
     "name": "vpd",
@@ -95,7 +123,7 @@
     "session": false,
     "storeId": "0",
     "value": "v1%3B585x313x2.3014395236968994",
-    "id": 7
+    "id": 9
 },
 {
     "domain": ".facebook.com",
@@ -109,11 +137,11 @@
     "session": false,
     "storeId": "0",
     "value": "313x585",
-    "id": 8
+    "id": 10
 },
 {
     "domain": ".facebook.com",
-    "expirationDate": 1735106467,
+    "expirationDate": 1735106709,
     "hostOnly": false,
     "httpOnly": false,
     "name": "wl_cbv",
@@ -122,8 +150,8 @@
     "secure": true,
     "session": false,
     "storeId": "0",
-    "value": "v2%3Bclient_version%3A2630%3Btimestamp%3A1727330466",
-    "id": 9
+    "value": "v2%3Bclient_version%3A2630%3Btimestamp%3A1727330709",
+    "id": 11
 },
 {
     "domain": ".facebook.com",
@@ -137,6 +165,6 @@
     "session": false,
     "storeId": "0",
     "value": "35%3A6y7CKlVEOHPDOQ%3A2%3A1727328535%3A-1%3A5281",
-    "id": 10
+    "id": 12
 }
 ]
