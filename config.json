@@ -37,16 +37,16 @@
   "adminBot": [
     "61564523816700",
     "61565025325331",
-    "61565654826940",
-    "6526066677495785",
-    "100078193001468"
+    "27089802743938316",
+    "",
+    "61566369721724"
   ],
   "whiteListMode": {
     "enable": false,
     "whiteListIds": [
       "100076969407340",
       "61565654826940",
-      ""
+      "61566369721724"
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
   },
@@ -178,7 +178,7 @@
   "whiteListModeThread": {
     "enable": false,
     "whiteListThreadIds": [
-      "6526066677495785",
+      "8793795193966076",
       "27089802743938316"
     ],
     "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
