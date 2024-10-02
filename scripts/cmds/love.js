@@ -1,6 +1,6 @@
 module.exports = {
   config: {
-    name: "love",
+    name: "love2",
     role: 0,
     author: "ArYan",
     countDown: 5,
