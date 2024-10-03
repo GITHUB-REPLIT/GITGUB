@@ -37,14 +37,16 @@
   "adminBot": [
     "61564523816700",
     "61565025325331",
-    ""
+    "27089802743938316",
+    "61566526536562",
+    "61566369721724"
   ],
   "whiteListMode": {
     "enable": false,
     "whiteListIds": [
-      "",
-      "",
-      ""
+      "100076969407340",
+      "61565654826940",
+      "61566369721724"
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds section can use the bot"
   },
@@ -54,6 +56,7 @@
   "api": "https://www.noobs-api.000.pe",
   "api2": "https://www.noobs-api.000.pe/dipto",
   "a6y": "https://a6-video-api-t0il.onrender.com/Romim",
+  "api3": "https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json",
   "authorName": "ArYan",
   "facebook2": "https://www.facebook.com/raj.vai.404",
   "facebook": "https://www.facebook.com/ArYan.com.404",
@@ -175,8 +178,8 @@
   "whiteListModeThread": {
     "enable": false,
     "whiteListThreadIds": [
-      "7271330272945067",
-      ""
+      "8793795193966076",
+      "27089802743938316"
     ],
     "notes": "if you enable this feature, only the thread in the whiteListThreadIds list can use the bot",
     "how_it_work": "if you enable both whiteListMode and whiteListModeThread, the system will check if the user is in whiteListIds, then check if the thread is in whiteListThreadIds, if one of the conditions is true, the user can use the bot"
